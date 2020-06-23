@@ -111,6 +111,20 @@ const Viewer = ({ manifest }) => {
         openSeadragonInstance.addOnceHandler("open", handleFullyLoaded);
       }
     }
+
+    return () => {
+      console.log("Inside osd instance");
+      configProps.deepLinking = false;
+      // if (openSeadragonInstance) {
+
+      //   console.log("-------", openSeadragonInstance);
+      //   // openSeadragonInstance.removeHandler("page");
+      //   // openSeadragonInstance.removeHandler("pan");
+      //   // openSeadragonInstance.removeHandler("zoom");
+      //   // openSeadragonInstance.removeHandler("open");
+      //   // openSeadragonInstance = undefined;
+      // }
+    };
   }, [openSeadragonInstance]);
 
   const handlePanZoomUpdate = () => {

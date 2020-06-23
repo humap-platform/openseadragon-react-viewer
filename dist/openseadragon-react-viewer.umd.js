@@ -207,6 +207,10 @@
     }));
   }
 
+  function _readOnlyError(name) {
+    throw new Error("\"" + name + "\" is read-only");
+  }
+
   function _slicedToArray(arr, i) {
     return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
   }
@@ -2323,6 +2327,18 @@
           openSeadragonInstance.addOnceHandler("open", handleFullyLoaded);
         }
       }
+
+      return function () {
+        console.log("Inside osd instance");
+
+        if (openSeadragonInstance) {
+          openSeadragonInstance.removeHandler("page");
+          openSeadragonInstance.removeHandler("pan");
+          openSeadragonInstance.removeHandler("zoom");
+          openSeadragonInstance.removeHandler("open");
+          openSeadragonInstance = (_readOnlyError("openSeadragonInstance"), undefined);
+        }
+      };
     }, [openSeadragonInstance]);
 
     var handlePanZoomUpdate = function handlePanZoomUpdate() {
