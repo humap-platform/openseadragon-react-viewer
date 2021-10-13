@@ -218,12 +218,12 @@ const Viewer = ({ manifest }) => {
     }
 
     const customControlIds = {
-      zoomInButton: "zoom-in",
-      zoomOutButton: "zoom-out",
+      zoomInButton: `zoom-in-${configProps.containerId}`,
+      zoomOutButton: `zoom-out-${configProps.containerId}`,
       //homeButton: "home",
-      fullPageButton: "full-page",
-      nextButton: "next",
-      previousButton: "previous",
+      fullPageButton: `full-page-${configProps.containerId}`,
+      nextButton: `next-${configProps.containerId}`,
+      previousButton: `previous-${configProps.containerId}`,
     };
 
     // Include any user passed in Open Seadragon config options
@@ -292,6 +292,7 @@ const Viewer = ({ manifest }) => {
                 onDownloadCropClick={handleDownloadCropClick}
                 onDownloadFullSize={handleDownloadFullSize}
                 toolBarOptions={configProps.toolBarOptions}
+                containerId={configProps.containerId}
               />
             </div>
           )}
